@@ -27,7 +27,7 @@ sudo add-apt-repository -y ppa:stgraber/stgraber.net   # recent version of jq JS
 sudo add-apt-repository -y ppa:ricotz/docky            # the dock called plank
 sudo add-apt-repository -y ppa:kilian/f.lux            # f.lux color balance controller
 
-# update/upgrade
+# Update/upgrade
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -35,7 +35,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y install xfce4-terminal variety gparted conky acpi screenfetch numix-gtk-theme numix-icon-theme numix-icon-theme-circle nemo-dropbox jq plank libcurl3 git system-config-lvm fluxgui 
 sudo apt-get -y install pepperflashplugin-nonfree >/dev/null 2>&1 
 
-# Vivaldi browser (this line fragile for verion changes!)
+# Vivaldi browser (this line fragile for version changes!)
 wget https://vivaldi.com/download/vivaldi-beta_1.0.303.52-5_amd64.deb -O vivaldi-snapshot_amd64.deb
 sudo dpkg -i vivaldi-snapshot_amd64.deb
 
@@ -59,7 +59,7 @@ gsettings set org.cinnamon.settings-daemon.plugins.mouse active false
 cp -r ~/Dropbox/linux/fonts/* ~/.fonts
 fc-cache -fv
 
-#Enable bitmapped fonts
+# Enable bitmapped fonts
 sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
 sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf
 
@@ -75,12 +75,12 @@ gsettings set org.cinnamon.desktop.wm.preferences num-workspaces 3
 
 # Set clock format text
 cd ~/.cinnamon/configs/calendar@cinnamon.org
-jq '.["use-custom-format"].value="true"|.["custom-format"].value=" %a %b %e, %l:%M %p "' 13.json > 13.tmp
+jq '.["use-custom-format"].value="true"|.["custom-format"].value=" %a %b %-e, %-l:%M %p "' 13.json > 13.tmp
 mv 13.json 13.sav
 mv 13.tmp 13.json
 cd
 
-# Set menu text
+# Set Cinn main menu text
 cd ~/.cinnamon/configs/menu@cinnamon.org
 jq '.["menu-label"].value="NOCTVA"' 0.json > 0.tmp
 mv 0.json 0.sav
